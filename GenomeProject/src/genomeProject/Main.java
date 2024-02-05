@@ -17,6 +17,15 @@ public class Main {
 		
 	}
 	
+	private static String getUIDs() {
+		
+		return "";
+	}
+	
+	/* The sendGet method creates and sends an HTTP GET request to NCBI's database.
+	 * It accepts a string of UIDs delimited by commas, and prints out
+	 * the response from the APi, which is formatted using JSON.
+	 */
 	private static void sendGET(String query) throws IOException {
 		URL obj = new URL(query);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
