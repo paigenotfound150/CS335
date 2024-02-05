@@ -17,22 +17,19 @@ public class Main {
 		
 	}
 	
-	private static String getUIDs() {
-		
-		return "";
-	}
-	
-	/* The sendGet method creates and sends an HTTP GET request to NCBI's database.
+	/* The sendGET method creates and sends an HTTP GET request to NCBI's database.
 	 * It accepts a string of UIDs delimited by commas, and prints out
 	 * the response from the APi, which is formatted using JSON.
 	 */
 	private static void sendGET(String query) throws IOException {
+		// Create connection and send request
 		URL obj = new URL(query);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
 		int responseCode = con.getResponseCode();
 		
 		System.out.println("GET Response Code :: " + responseCode);
+		// Read response
 		if (responseCode == HttpURLConnection.HTTP_OK) { // success
 			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String inputLine;
@@ -43,7 +40,7 @@ public class Main {
 			}
 			in.close();
 
-			// print result
+			// If successful, print result
 			System.out.println(response.toString());
 		} else {
 		System.out.println("GET request did not work");
