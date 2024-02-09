@@ -2,8 +2,6 @@ package genomeProject;
 
 import java.io.IOException;
 
-import genomeProject.HTTPHelper;
-
 public class Main {
 	
 	public static void main(String[] args) {
@@ -12,11 +10,9 @@ public class Main {
 		String command = "efetch.fcgi?db=nuccore&id=KR132597.1&rettype=fasta&retmode=json";
 		String query = header.concat(command);
 		
-		HTTPHelper HTTPRequestHandler = new HTTPHelper();
 		try {
-			HTTPRequestHandler.sendGET(query);
+			HTTPHelper.sendGET(query);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
