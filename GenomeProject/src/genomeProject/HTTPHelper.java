@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class HTTPHelper {
 	
-	/* The sendGET method creates and sends an HTTP GET request to NCBI's E-Utils APi.
+	/* sendGET creates and sends an HTTP GET request to NCBI's E-Utils APi.
 	 * It accepts an API query, formatted as a string, and prints out
 	 * the response from the APi.*/
 	public static void sendGET(String query) throws IOException {
