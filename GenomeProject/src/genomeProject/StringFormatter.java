@@ -1,6 +1,6 @@
 package genomeProject;
 
-class StringFormatter {
+public class StringFormatter {
 	
 	/* removeWhiteSpace removes any whitespace in a string. */
 	public static String removeWhiteSpace(String original) {
