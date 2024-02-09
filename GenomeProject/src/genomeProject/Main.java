@@ -17,10 +17,9 @@ public class Main {
 		
 	}
 	
-	/* The sendGET method creates and sends an HTTP GET request to NCBI's database.
-	 * It accepts a string of UIDs delimited by commas, and prints out
-	 * the response from the APi, which is formatted using JSON.
-	 */
+	/* The sendGET method creates and sends an HTTP GET request to NCBI's E-Utils APi.
+	 * It accepts an API query, formatted as a string, and prints out
+	 * the response from the APi.*/
 	private static void sendGET(String query) throws IOException {
 		// Create connection and send request
 		URL obj = new URL(query);
