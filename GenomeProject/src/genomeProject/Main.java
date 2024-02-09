@@ -1,13 +1,14 @@
 package genomeProject;
 
 import java.io.IOException;
+import java.io.FileWriter;
 
 public class Main {
 	
 	public static void main(String[] args) {
 		
 		String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
-		String command = "efetch.fcgi?db=nuccore&id=KR132597.1&rettype=fasta&retmode=json";
+		String command = "efetch.fcgi?db=nuccore&id=KR132597.1&retmode=json";
 		String query = header.concat(command);
 		String formatted_query = StringFormatter.removeWhiteSpace(query);
 		String response = "";
@@ -17,7 +18,10 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		System.out.println(response);
+		// To string method prints it with specified indentation
+		String s = response.replaceAll("(?<=[{:,])|(?=[:,}])", "\"");
+		System.out.println(s);
+		
 	}
 	
 	
