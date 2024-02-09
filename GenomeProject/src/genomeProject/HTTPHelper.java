@@ -11,7 +11,7 @@ public class HTTPHelper {
 	/* sendGET creates and sends an HTTP GET request to NCBI's E-Utils APi.
 	 * It accepts an API query, formatted as a string, and prints out
 	 * the response from the APi.*/
-	public static void sendGET(String query) throws IOException {
+	public static String sendGET(String query) throws IOException {
 		// Create connection and send request
 		URL obj = new URL(query);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -30,10 +30,11 @@ public class HTTPHelper {
 			}
 			in.close();
 
-			// If successful, print result
-			System.out.println(response.toString());
+			// If successful, return response
+			return response.toString();
 		} else {
 		System.out.println("GET request did not work");
 		}
+		return "";
 	}
 }

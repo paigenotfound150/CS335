@@ -10,11 +10,14 @@ public class Main {
 		String command = "efetch.fcgi?db=nuccore&id=KR132597.1&rettype=fasta&retmode=json";
 		String query = header.concat(command);
 		String formatted_query = StringFormatter.removeWhiteSpace(query);
+		String response = "";
 		try {
-			HTTPHelper.sendGET(formatted_query);
+			response = HTTPHelper.sendGET(formatted_query);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println(response);
 	}
 	
 	
