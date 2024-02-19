@@ -14,7 +14,7 @@ public class entrezQuery{
 			String geneEntry = sc.nextLine();
 			System.out.println("Do you have additional search terms to add? (ex. 'NOT partial') Please enter 'y' for yes and 'n' for no.");
 			String termOpt = sc.nextLine();
-			if(termOpt == "y") {
+			if(termOpt.equals("y")) {
 				System.out.println("Please enter your additional search terms");
 				terms = sc.nextLine();
 				sc.close();
