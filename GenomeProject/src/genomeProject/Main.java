@@ -1,6 +1,8 @@
 package genomeProject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
     
@@ -45,10 +47,15 @@ public class Main {
         String forwardPrimer = primerInputHandler.getForwardPrimer();
         String reversePrimer = primerInputHandler.getReversePrimer();
         
+        // using f + r primer to make the error go away
         System.out.println(forwardPrimer + reversePrimer);
-
-        // Use the primers for further processing as needed
-        // ...
+        
+        // testing neucmatch
+        String testValid = "A";
+        HashMap<String, ArrayList<String>> testDictionary = NeucMatch.makeDictionary();
+        System.out.println(NeucMatch.getMatch(testDictionary, testValid));
+        String testInvalid = "Z";
+        System.out.println(NeucMatch.getMatch(testDictionary, testInvalid));
 
         // Since we are done with all input operations, close the Scanner
         primerInputHandler.closeScanner();
