@@ -24,4 +24,28 @@ public class StringFormatter {
 		uidList = uidList.replaceAll("</Id>", "");
 		return(uidList);
 	}
+	
+	// pull definition from eFetch response
+	public static String defGet(String response) {
+		int defStart = response.indexOf("<GBSeq_definition>");
+		int defEnd = response.indexOf("</GBSeq_definition>");
+		String definition = response.substring((defStart + 18), defEnd);
+		return(definition);
+	}
+	
+	// pull sequence from eFetch response
+	public static String seqGet(String response) {
+		int seqStart = response.indexOf("<GBSeq_sequence>");
+		int seqEnd = response.indexOf("</GBSeq_sequence>");
+		String sequence = response.substring((seqStart + 16), seqEnd);
+		return(sequence);
+	}
+	
+	// put definition and sequence together
+	public static String fastaGet(String response) {
+		String def = defGet(response);
+		String seq = seqGet(response).toUpperCase();
+		String fasta = def + "\n+\n" + seq;
+		return(fasta);
+	}
 }
