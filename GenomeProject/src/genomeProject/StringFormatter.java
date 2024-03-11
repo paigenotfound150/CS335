@@ -37,15 +37,7 @@ public class StringFormatter {
 	public static String seqGet(String response) {
 		int seqStart = response.indexOf("<GBSeq_sequence>");
 		int seqEnd = response.indexOf("</GBSeq_sequence>");
-		String sequence = response.substring((seqStart + 16), seqEnd);
+		String sequence = response.substring((seqStart + 16), seqEnd).toUpperCase();
 		return(sequence);
-	}
-	
-	// put definition and sequence together
-	public static String fastaGet(String response) {
-		String def = defGet(response);
-		String seq = seqGet(response).toUpperCase();
-		String fasta = def + "\n+\n" + seq;
-		return(fasta);
 	}
 }

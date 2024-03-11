@@ -19,4 +19,10 @@ public class QueryResult {
     public String getSequence() {
         return sequence;
     }
+    
+ // put definition and sequence together
+ 	public static String fastaGet(QueryResult item) {
+ 		String fasta = item.description + "\n+\n" + item.sequence;
+ 		return(fasta);
+ 	}
 }

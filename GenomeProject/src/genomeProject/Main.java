@@ -26,7 +26,7 @@ String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
         
         // eFetch builder
         String uidList = StringFormatter.uidFinder(esearchResponse);
-        String efetchCommand = "efetch.fcgi?db=nuccore&id=" + uidList + "&rettype=fasta";
+        String efetchCommand = "efetch.fcgi?db=nuccore&id=" + uidList + "&rettype=json";
         String efetchQuery = header.concat(efetchCommand);
         String formatted_query = StringFormatter.removeWhiteSpace(efetchQuery);
         String response = "";
@@ -52,12 +52,11 @@ String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
         // using f + r primer to make the error go away
         System.out.println(forwardPrimer + reversePrimer);
         
-        // testing fasta maker
-        String fastatest = StringFormatter.fastaGet(response);
-        System.out.println(fastatest);
+        // testing query result objects and fasta maker
+        QueryResult fastatest = new QueryResult(StringFormatter.defGet(response), StringFormatter.seqGet(response));
+        System.out.println(QueryResult.fastaGet(fastatest));
 
         // Since we are done with all input operations, close the Scanner
         primerInputHandler.closeScanner();
-
     }
 }
