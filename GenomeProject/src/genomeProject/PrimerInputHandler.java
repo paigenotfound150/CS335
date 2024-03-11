@@ -7,12 +7,12 @@ public class PrimerInputHandler {
     private String reversePrimer;
     private Scanner sc;
 
-    // Modify constructor to accept Scanner object
-    public PrimerInputHandler(Scanner sc) {
-        this.sc = sc; // Use the passed Scanner object
+    public PrimerInputHandler() {
+        sc = new Scanner(System.in); // Initialize the Scanner here
     }
 
     public void getPrimersFromUser() {
+        // Prompt user for forward primer
         System.out.println("Please enter your forward primer (5' to 3' on + strand)");
         forwardPrimer = sc.nextLine();
         while (!isValidPrimer(forwardPrimer)) {
@@ -20,15 +20,19 @@ public class PrimerInputHandler {
             forwardPrimer = sc.nextLine();
         }
 
+        // Prompt user for reverse primer
         System.out.println("Please enter your reverse primer (5' to 3' on - strand):");
         reversePrimer = sc.nextLine();
         while (!isValidPrimer(reversePrimer)) {
             System.out.println("Invalid input. Primer must only contain A, T, C, or G. Please try again.");
             reversePrimer = sc.nextLine();
         }
+        
+        // Do not close the scanner here
     }
 
     private boolean isValidPrimer(String primer) {
+        // Check if the primer sequence contains only A, T, C, or G
         return primer.matches("[ATCG]+");
     }
 
@@ -39,6 +43,9 @@ public class PrimerInputHandler {
     public String getReversePrimer() {
         return reversePrimer;
     }
-
-    // Removed the closeScanner method as it's no longer necessary here
+    
+    // Call this method to close the scanner when you're done with all input operations
+    public void closeScanner() {
+        sc.close();
+    }
 }
