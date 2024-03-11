@@ -24,7 +24,7 @@ public class Main {
         
         // eFetch builder
         String uidList = StringFormatter.uidFinder(esearchResponse);
-        String efetchCommand = "efetch.fcgi?db=nuccore&id=" + uidList + "&rettype=fasta";
+        String efetchCommand = "efetch.fcgi?db=nuccore&id=" + uidList + "&rettype=json";
         String efetchQuery = header.concat(efetchCommand);
         String formatted_query = StringFormatter.removeWhiteSpace(efetchQuery);
         String response = "";
@@ -50,12 +50,9 @@ public class Main {
         // using f + r primer to make the error go away
         System.out.println(forwardPrimer + reversePrimer);
         
-        // testing neucmatch
-        String testValid = "A";
-        HashMap<String, ArrayList<String>> testDictionary = NeucMatch.makeDictionary();
-        System.out.println(NeucMatch.getMatch(testDictionary, testValid));
-        String testInvalid = "Z";
-        System.out.println(NeucMatch.getMatch(testDictionary, testInvalid));
+        // testing fasta maker
+        String fastatest = StringFormatter.fastaGet(response);
+        System.out.println(fastatest);
 
         // Since we are done with all input operations, close the Scanner
         primerInputHandler.closeScanner();
