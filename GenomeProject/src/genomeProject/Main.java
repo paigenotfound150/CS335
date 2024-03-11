@@ -3,11 +3,13 @@ package genomeProject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
-    
+
     public static void main(String[] args) {
-        String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
+String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
         
         // eSearch builder
         String dbQuery = entrezQuery.main();
@@ -24,7 +26,7 @@ public class Main {
         
         // eFetch builder
         String uidList = StringFormatter.uidFinder(esearchResponse);
-        String efetchCommand = "efetch.fcgi?db=nuccore&id=" + uidList + "&rettype=json";
+        String efetchCommand = "efetch.fcgi?db=nuccore&id=" + uidList + "&rettype=fasta";
         String efetchQuery = header.concat(efetchCommand);
         String formatted_query = StringFormatter.removeWhiteSpace(efetchQuery);
         String response = "";
@@ -46,7 +48,7 @@ public class Main {
         primerInputHandler.getPrimersFromUser();
         String forwardPrimer = primerInputHandler.getForwardPrimer();
         String reversePrimer = primerInputHandler.getReversePrimer();
-        
+
         // using f + r primer to make the error go away
         System.out.println(forwardPrimer + reversePrimer);
         
@@ -56,5 +58,6 @@ public class Main {
 
         // Since we are done with all input operations, close the Scanner
         primerInputHandler.closeScanner();
+
     }
 }
