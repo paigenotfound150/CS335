@@ -44,19 +44,22 @@ String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
         System.out.println(s);
 
         // After the NCBI fetch, now ask for primers
-        PrimerInputHandler primerInputHandler = new PrimerInputHandler();
-        primerInputHandler.getPrimersFromUser();
-        String forwardPrimer = primerInputHandler.getForwardPrimer();
-        String reversePrimer = primerInputHandler.getReversePrimer();
+//        PrimerInputHandler primerInputHandler = new PrimerInputHandler();
+//        primerInputHandler.getPrimersFromUser();
+//        String forwardPrimer = primerInputHandler.getForwardPrimer();
+//        String reversePrimer = primerInputHandler.getReversePrimer();
 
         // using f + r primer to make the error go away
-        System.out.println(forwardPrimer + reversePrimer);
+       // System.out.println(forwardPrimer + reversePrimer);
         
         // testing query result objects and fasta maker
-        QueryResult fastatest = new QueryResult(StringFormatter.defGet(response), StringFormatter.seqGet(response));
-        System.out.println(QueryResult.fastaGet(fastatest));
+      // QueryResult fastatest = new QueryResult(StringFormatter.defGet(response), StringFormatter.seqGet(response));
+       // System.out.println(QueryResult.fastaGet(fastatest));
+        
+        //System.out.println(StringFormatter.splitRecord(response));
+        StringFormatter.splitRecord(response);
 
         // Since we are done with all input operations, close the Scanner
-        primerInputHandler.closeScanner();
+       // primerInputHandler.closeScanner();
     }
 }
