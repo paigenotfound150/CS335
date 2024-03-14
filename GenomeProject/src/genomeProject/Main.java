@@ -46,13 +46,22 @@ String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
         }
 
         // After the NCBI fetch, now ask for primers
-//        PrimerInputHandler primerInputHandler = new PrimerInputHandler();
-//        primerInputHandler.getPrimersFromUser();
-//        String forwardPrimer = primerInputHandler.getForwardPrimer();
-//        String reversePrimer = primerInputHandler.getReversePrimer();
+        PrimerInputHandler primerInputHandler = new PrimerInputHandler();
+        primerInputHandler.getPrimersFromUser();
+        String forwardPrimer = primerInputHandler.getForwardPrimer();
+        String reversePrimer = primerInputHandler.getReversePrimer();
 
-        // using f + r primer to make the error go away
-       // System.out.println(forwardPrimer + reversePrimer);
+        // Need to reverse the reverse primer
+        HashMap<String, ArrayList<String>> reversePrimerMatches = NeucMatch.makeReversePrimerDictionary();
+        String reversedPrimer = "";
+        for (int i = 0; i < reversePrimer.length(); i++) {
+        	char current_char = reversePrimer.charAt(i);
+        	String n = String.valueOf(current_char);
+        	String match = NeucMatch.getMatch(reversePrimerMatches, n);
+        	System.out.println(match);
+            reversedPrimer = reversedPrimer+match;
+        }
+        System.out.println(reversedPrimer);
  
         
 

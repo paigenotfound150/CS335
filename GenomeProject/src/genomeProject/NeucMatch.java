@@ -40,6 +40,19 @@ public class NeucMatch{
 		neucDictionary.put("N", nMatch);
 		return(neucDictionary);
 	}
+	
+	public static HashMap<String, ArrayList<String>> makeReversePrimerDictionary() {
+		HashMap<String, ArrayList<String>> neucDictionary = new HashMap<>();
+		ArrayList<String> aMatch = new ArrayList<String>(List.of("T"));
+		neucDictionary.put("A", aMatch);
+		ArrayList<String> tMatch = new ArrayList<String>(List.of("A"));
+		neucDictionary.put("T", tMatch);
+		ArrayList<String> cMatch = new ArrayList<String>(List.of("G"));
+		neucDictionary.put("C", cMatch);
+		ArrayList<String> gMatch = new ArrayList<String>(List.of("C"));
+		neucDictionary.put("G", gMatch);
+		return neucDictionary;
+	}
 		
 	public static String getMatch(HashMap<String, ArrayList<String>> dictionary, String letterToMatch){
 		if(dictionary.containsKey(letterToMatch)){
