@@ -38,10 +38,12 @@ String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
             e.printStackTrace();
         }
         
-        // To string method prints it with specified indentation
-        // (not sure what this does but I trust paige <3 -Anna)
-        String s = response.replaceAll("(?<=[{:,])|(?=[:,}])", "\"");
-        System.out.println(s);
+        // Split the response into a list of QueryResults
+        ArrayList<String> records = StringFormatter.splitRecord(response);
+        for (String record : records) {
+        	QueryResult fastatest = new QueryResult(StringFormatter.defGet(response), StringFormatter.seqGet(response));
+            System.out.println(QueryResult.fastaGet(fastatest));
+        }
 
         // After the NCBI fetch, now ask for primers
 //        PrimerInputHandler primerInputHandler = new PrimerInputHandler();
@@ -51,13 +53,8 @@ String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
 
         // using f + r primer to make the error go away
        // System.out.println(forwardPrimer + reversePrimer);
+ 
         
-        // testing query result objects and fasta maker
-      // QueryResult fastatest = new QueryResult(StringFormatter.defGet(response), StringFormatter.seqGet(response));
-       // System.out.println(QueryResult.fastaGet(fastatest));
-        
-        //System.out.println(StringFormatter.splitRecord(response));
-        StringFormatter.splitRecord(response);
 
         // Since we are done with all input operations, close the Scanner
        // primerInputHandler.closeScanner();

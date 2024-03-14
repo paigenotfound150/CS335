@@ -29,7 +29,7 @@ public class StringFormatter {
 		return(uidList);
 	}
 	
-	// split into separate records
+	// split into separate records and add to a list
 	public static ArrayList<String> splitRecord(String response) {
 		ArrayList<String> records = new ArrayList<String>();
 		
@@ -40,9 +40,7 @@ public class StringFormatter {
 		                   ).matcher(response);
 		while(m.find()){
 		    String match = m.group(1);
-		    System.out.println(">"+match+"<");
 		    records.add(match);
-		    //here you insert 'match' into the list
 		}
 		return records;
 	}
