@@ -60,4 +60,5 @@ public class StringFormatter {
 		String sequence = response.substring((seqStart + 16), seqEnd).toUpperCase();
 		return(sequence);
 	}
+	
 }

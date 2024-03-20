@@ -1,8 +1,8 @@
 package genomeProject;
 
 public class QueryResult {
-    private String description;
-    private String sequence;
+    private static String description;
+    private static String sequence;
 
     // Constructor
     public QueryResult(String description, String sequence) {
@@ -21,8 +21,8 @@ public class QueryResult {
     }
     
  // put definition and sequence together
- 	public static String fastaGet(QueryResult item) {
- 		String fasta = item.description + "\n+\n" + item.sequence;
+ 	public static String fastaGet() {
+ 		String fasta = description + "\n+\n" + sequence;
  		return(fasta);
  	}
 }
