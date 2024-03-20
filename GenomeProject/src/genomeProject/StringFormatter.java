@@ -1,5 +1,9 @@
 package genomeProject;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringFormatter {
 	
 	// removes any whitespace in a string
@@ -25,6 +29,22 @@ public class StringFormatter {
 		return(uidList);
 	}
 	
+	// split into separate records and add to a list
+	public static ArrayList<String> splitRecord(String response) {
+		ArrayList<String> records = new ArrayList<String>();
+		
+		Matcher m = Pattern.compile(
+		                            Pattern.quote("<GBSeq>")
+		                            + "(.*?)"
+		                            + Pattern.quote("</GBSeq>")
+		                   ).matcher(response);
+		while(m.find()){
+		    String match = m.group(1);
+		    records.add(match);
+		}
+		return records;
+	}
+	
 	// pull definition from eFetch response
 	public static String defGet(String response) {
 		int defStart = response.indexOf("<GBSeq_definition>");
@@ -40,4 +60,5 @@ public class StringFormatter {
 		String sequence = response.substring((seqStart + 16), seqEnd).toUpperCase();
 		return(sequence);
 	}
+	
 }
