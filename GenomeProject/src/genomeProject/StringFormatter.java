@@ -60,5 +60,17 @@ public class StringFormatter {
 		String sequence = response.substring((seqStart + 16), seqEnd).toUpperCase();
 		return(sequence);
 	}
+    
+    // New method to extract accession number
+    public static String accessionGet(String response) {
+        int start = response.indexOf("<GBSeq_accession-version>");
+        int end = response.indexOf("</GBSeq_accession-version>");
+        if (start != -1 && end != -1) {
+            // Adjusting indices to get the content within the tags
+            return response.substring(start + 25, end);
+        } else {
+            return "Accession number not found";
+        }
+    }
 	
 }
