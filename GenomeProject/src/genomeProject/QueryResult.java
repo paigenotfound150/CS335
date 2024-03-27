@@ -1,13 +1,15 @@
 package genomeProject;
 
 public class QueryResult {
-    private static String description;
-    private static String sequence;
+    private String description;
+    private String sequence;
+    private String accessionID; // New variable for accessionID
 
-    // Constructor
-    public QueryResult(String description, String sequence) {
+    // Updated constructor to include accessionID
+    public QueryResult(String description, String sequence, String accessionID) {
         this.description = description;
         this.sequence = sequence;
+        this.accessionID = accessionID;
     }
 
     // Getter for description
@@ -20,9 +22,14 @@ public class QueryResult {
         return sequence;
     }
     
- // put definition and sequence together
- 	public static String fastaGet() {
- 		String fasta = description + "\n+\n" + sequence;
- 		return(fasta);
- 	}
+    // New getter for accessionID
+    public String getAccessionID() {
+        return accessionID;
+    }
+    
+    // Updated fastaGet() method to include accessionID
+    public String fastaGet() {
+        // Formats the output to include accessionID, description, and sequence
+        return ">" + accessionID + " " + description + "\n+\n" + sequence;
+    }
 }

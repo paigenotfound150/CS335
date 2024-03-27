@@ -2,6 +2,8 @@ package genomeProject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -36,9 +38,7 @@ public class Main {
             e.printStackTrace();
         }
         
-        // Extract and print the accession number
-        String accessionNumber = StringFormatter.accessionGet(response);
-        System.out.println("Accession Number: " + accessionNumber);
+        System.out.println(response);
         
         // Split the response into a list of QueryResults
         ArrayList<String> records = StringFormatter.splitRecord(response);
@@ -59,9 +59,10 @@ public class Main {
     
     public static ArrayList<QueryResult> createQueryResultsArray(ArrayList<String> records) {
         ArrayList<QueryResult> queryResults = new ArrayList<>();
-        
+    	
         for (String record : records) {
-            QueryResult newQueryResult = new QueryResult(StringFormatter.defGet(record), StringFormatter.seqGet(record));
+            String accessionID = StringFormatter.accessionGet(record); // Extract the accessionID
+        	QueryResult newQueryResult = new QueryResult(StringFormatter.defGet(record), StringFormatter.seqGet(record), accessionID);
             queryResults.add(newQueryResult);
             System.out.println(newQueryResult.fastaGet());
         }
@@ -71,11 +72,11 @@ public class Main {
     public static String reverseReversePrimer(String reversePrimer) {
         HashMap<String, ArrayList<String>> reversePrimerMatches = NeucMatch.makeReversePrimerDictionary();
         String reversedPrimer = "";
-        for (int i = 0; i < reversePrimer.length(); i++) {
-            char current_char = reversePrimer.charAt(i);
-            String n = String.valueOf(current_char);
-            String match = NeucMatch.getMatch(reversePrimerMatches, n).replaceAll("[\\[\\]]", "");
-            reversedPrimer = reversedPrimer + match;
+        for (int i = reversePrimer.length() - 1; i >= 0; i--) {
+        	char current_char = reversePrimer.charAt(i);
+        	String n = String.valueOf(current_char);
+        	String match = NeucMatch.getMatch(reversePrimerMatches, n).replaceAll("[\\[\\]]", "");
+            reversedPrimer = match + reversedPrimer; // Fix to correctly reverse and complement
         }
         System.out.println("The reversed primer is: " + reversedPrimer);
         return reversedPrimer;
