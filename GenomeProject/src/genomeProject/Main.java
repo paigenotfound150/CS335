@@ -9,19 +9,21 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
         
-        // eSearch builder
-        String dbQuery = entrezQuery.main();
-        String esearchCommand = "esearch.fcgi?db=nuccore&term=".concat(dbQuery);
-        String esearchQuery = header.concat(esearchCommand);
-        String esearchResponse = "";
+        String esearchResponse = eSearcher(header);
         
-        // eSearch send
-        try {
-            esearchResponse = HTTPHelper.sendGET(esearchQuery);
-        } catch (IOException e) {
-            e.printStackTrace();
+        // catch if there's no results from esearch, give option to restart
+        while(esearchResponse.contains("No items found")) {
+        	System.out.println("Sorry, but we could not find that search term in our database. Would you like to try entering a new query? Please enter y or n.");
+        	String choice = sc.nextLine();
+        	
+        	if(choice.equals("y")){
+        		esearchResponse = eSearcher(header);
+        	} else {
+        		System.exit(0);
+        	}
         }
         
         // eFetch builder
@@ -80,5 +82,22 @@ public class Main {
         }
         System.out.println("The reversed primer is: " + reversedPrimer);
         return reversedPrimer;
+    }
+    
+    public static String eSearcher(String header) {
+        // eSearch builder
+        String dbQuery = entrezQuery.main();
+        String esearchCommand = "esearch.fcgi?db=nuccore&term=".concat(dbQuery);
+        String esearchQuery = header.concat(esearchCommand);
+        String esearchResponse = "";
+        
+        // eSearch send
+        try {
+            esearchResponse = HTTPHelper.sendGET(esearchQuery);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return(esearchResponse);
     }
 }
