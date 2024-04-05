@@ -1,7 +1,7 @@
 package genomeProject;
 import java.util.Scanner;
 
-public class entrezQuery{
+public class EntrezQuery{
 	public static String getUserEntrezQuery(Scanner sc){
 		System.out.println("Step 1: Reference Database. Would you like to (a) build an Entrez query or (b) submit your own? Please enter 'a' or 'b'");
 		String dbOpt = sc.nextLine();

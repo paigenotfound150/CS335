@@ -83,7 +83,7 @@ public class Main {
     
     public static String eSearcher(String header, Scanner sc) {
         // eSearch builder
-        String dbQuery = entrezQuery.getUserEntrezQuery(sc);
+        String dbQuery = EntrezQuery.getUserEntrezQuery(sc);
         String esearchCommand = "esearch.fcgi?db=nuccore&term=".concat(dbQuery);
         String esearchQuery = header.concat(esearchCommand);
         String esearchResponse = "";
