@@ -3,7 +3,7 @@ package genomeProject;
 public class QueryResult {
     private String description;
     private String sequence;
-    private String accessionID; // New variable for accessionID
+    private String accessionID;
 
     // Updated constructor to include accessionID
     public QueryResult(String description, String sequence, String accessionID) {
@@ -22,7 +22,7 @@ public class QueryResult {
         return sequence;
     }
     
-    // New getter for accessionID
+    // Getter for accessionID
     public String getAccessionID() {
         return accessionID;
     }
