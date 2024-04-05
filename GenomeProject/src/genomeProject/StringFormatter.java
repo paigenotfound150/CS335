@@ -18,7 +18,7 @@ public class StringFormatter {
 		return(str);
 	}
 	
-	// to parse UID list
+	// parse UID list
 	public static String uidFinder(String response) {
 		int listStart = response.indexOf("<IdList>");
 		int listEnd = response.indexOf("</IdList>");
@@ -45,32 +45,11 @@ public class StringFormatter {
 		return records;
 	}
 	
-	// pull definition from eFetch response
-	public static String defGet(String response) {
-		int defStart = response.indexOf("<GBSeq_definition>");
-		int defEnd = response.indexOf("</GBSeq_definition>");
-		String definition = response.substring((defStart + 18), defEnd);
-		return(definition);
+	// get characters inbetween two strings
+	public static String getBookEndedString(String input, String start, String finish) {
+		String s = input.substring(input.indexOf(start) + start.length());
+		s = s.substring(0, s.indexOf(finish));
+		return s;
 	}
-	
-	// pull sequence from eFetch response
-	public static String seqGet(String response) {
-		int seqStart = response.indexOf("<GBSeq_sequence>");
-		int seqEnd = response.indexOf("</GBSeq_sequence>");
-		String sequence = response.substring((seqStart + 16), seqEnd).toUpperCase();
-		return(sequence);
-	}
-    
-    // New method to extract accession number
-    public static String accessionGet(String response) {
-        int start = response.indexOf("<GBSeq_accession-version>");
-        int end = response.indexOf("</GBSeq_accession-version>");
-        if (start != -1 && end != -1) {
-            // Adjusting indices to get the content within the tags
-            return response.substring(start + 25, end);
-        } else {
-            return "Accession number not found";
-        }
-    }
 	
 }

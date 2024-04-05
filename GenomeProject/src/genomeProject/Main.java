@@ -60,8 +60,11 @@ public class Main {
         ArrayList<QueryResult> queryResults = new ArrayList<>();
     	
         for (String record : records) {
-            String accessionID = StringFormatter.accessionGet(record); // Extract the accessionID
-        	QueryResult newQueryResult = new QueryResult(StringFormatter.defGet(record), StringFormatter.seqGet(record), accessionID);
+            String accessionID = StringFormatter.getBookEndedString(record, "<GBSeq_accession-version>", "</GBSeq_accession-version>"); 
+        	QueryResult newQueryResult = new QueryResult(
+        			StringFormatter.getBookEndedString(record, "<GBSeq_definition>", "</GBSeq_definition>"),
+        			StringFormatter.getBookEndedString(record, "<GBSeq_sequence>", "</GBSeq_sequence>").toUpperCase(), 
+        			accessionID);
             queryResults.add(newQueryResult);
             System.out.println(newQueryResult.fastaGet());
         }
