@@ -46,8 +46,8 @@ public class StringFormatter {
 	}
 	
 	// get characters inbetween two strings
-	public static String getBookEndedString(String input, String start, String finish) {
-		String s = input.substring(input.indexOf(start) + start.length());
+	public static String getBookEndedString(String str, String start, String finish) {
+		String s = str.substring(str.indexOf(start) + start.length());
 		s = s.substring(0, s.indexOf(finish));
 		return s;
 	}

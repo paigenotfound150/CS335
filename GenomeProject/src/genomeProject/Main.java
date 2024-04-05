@@ -51,9 +51,22 @@ public class Main {
         primerInputHandler.getPrimersFromUser(sc);
         String forwardPrimer = primerInputHandler.getForwardPrimer();
         String reversePrimer = primerInputHandler.getReversePrimer();
-
-        // Need to reverse the reverse primer
-        String reversedReversePrimer = reverseReversePrimer(reversePrimer);    
+        String reversedReversePrimer = reverseReversePrimer(reversePrimer); 
+        
+        // Find a match
+        ArrayList<String> matches = findMatches(queryResults, forwardPrimer, reversedReversePrimer);
+    }
+    
+    public static ArrayList<String> findMatches(ArrayList<QueryResult> queryResults, String forwardPrimer, String reversePrimer) {
+    	ArrayList<String> matches = new ArrayList<>();
+    	for (QueryResult result: queryResults) {
+    		String sequence = result.getSequence();
+    		int start = sequence.indexOf(forwardPrimer);
+    		int end = sequence.lastIndexOf(reversePrimer);
+    		
+    		System.out.println("There was a match of " + (end-start));
+    	}
+    	return matches;
     }
     
     public static ArrayList<QueryResult> createQueryResultsArray(ArrayList<String> records) {
