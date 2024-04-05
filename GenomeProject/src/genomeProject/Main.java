@@ -12,7 +12,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
         
-        String esearchResponse = eSearcher(header);
+        String esearchResponse = eSearcher(header, sc);
         
         // catch if there's no results from esearch, give option to restart
         while(esearchResponse.contains("No items found")) {
@@ -20,7 +20,7 @@ public class Main {
         	String choice = sc.nextLine();
         	
         	if(choice.equals("y")){
-        		esearchResponse = eSearcher(header);
+        		esearchResponse = eSearcher(header, sc);
         	} else {
         		System.exit(0);
         	}
@@ -48,15 +48,12 @@ public class Main {
 
         // After the NCBI fetch, now ask for primers
         PrimerInputHandler primerInputHandler = new PrimerInputHandler();
-        primerInputHandler.getPrimersFromUser();
+        primerInputHandler.getPrimersFromUser(sc);
         String forwardPrimer = primerInputHandler.getForwardPrimer();
         String reversePrimer = primerInputHandler.getReversePrimer();
 
         // Need to reverse the reverse primer
         String reversedReversePrimer = reverseReversePrimer(reversePrimer);    
-
-        // Since we are done with all input operations, close the Scanner
-        primerInputHandler.closeScanner();
     }
     
     public static ArrayList<QueryResult> createQueryResultsArray(ArrayList<String> records) {
@@ -84,9 +81,9 @@ public class Main {
         return reversedPrimer;
     }
     
-    public static String eSearcher(String header) {
+    public static String eSearcher(String header, Scanner sc) {
         // eSearch builder
-        String dbQuery = entrezQuery.main();
+        String dbQuery = entrezQuery.getUserEntrezQuery(sc);
         String esearchCommand = "esearch.fcgi?db=nuccore&term=".concat(dbQuery);
         String esearchQuery = header.concat(esearchCommand);
         String esearchResponse = "";

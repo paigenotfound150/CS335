@@ -5,13 +5,8 @@ import java.util.Scanner;
 public class PrimerInputHandler {
     private String forwardPrimer;
     private String reversePrimer;
-    private Scanner sc;
 
-    public PrimerInputHandler() {
-        sc = new Scanner(System.in); // Initialize the Scanner here
-    }
-
-    public void getPrimersFromUser() {
+    public void getPrimersFromUser(Scanner sc) {
         // Prompt user for forward primer
         System.out.println("Please enter your forward primer (5' to 3' on + strand)");
         forwardPrimer = sc.nextLine();
@@ -42,10 +37,5 @@ public class PrimerInputHandler {
 
     public String getReversePrimer() {
         return reversePrimer;
-    }
-    
-    // Call this method to close the scanner when you're done with all input operations
-    public void closeScanner() {
-        sc.close();
     }
 }
