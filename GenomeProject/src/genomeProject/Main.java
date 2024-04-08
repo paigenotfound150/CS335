@@ -82,7 +82,7 @@ public class Main {
     }
    
     public static void printMatches(ArrayList<QueryMatch> matches) {
-    	System.out.println(matches);
+    	System.out.println("Your matches are located below:");
     	for (QueryMatch match: matches) {
     		System.out.println(match.getInfo());
     	}
