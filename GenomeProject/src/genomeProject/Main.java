@@ -54,15 +54,15 @@ public class Main {
         String reversedReversePrimer = reverseReversePrimer(reversePrimer); 
         
         // Find matches
-        ArrayList<QueryMatch> matches = findMatches(queryResults, forwardPrimer, reversedReversePrimer);
+        ArrayList<Barcode> matches = findMatches(queryResults, forwardPrimer, reversedReversePrimer);
         printMatches(matches);
         
         // Close scanner at the complete end of program
         sc.close();
     }
     
-    public static ArrayList<QueryMatch> findMatches(ArrayList<QueryResult> queryResults, String forwardPrimer, String reversePrimer) {
-    	ArrayList<QueryMatch> matches = new ArrayList<>();
+    public static ArrayList<Barcode> findMatches(ArrayList<QueryResult> queryResults, String forwardPrimer, String reversePrimer) {
+    	ArrayList<Barcode> matches = new ArrayList<>();
     	for (QueryResult result: queryResults) {
     		String sequence = result.getSequence();
     		int start = sequence.indexOf(forwardPrimer);
@@ -75,15 +75,15 @@ public class Main {
     		int numberBasePairs = matched_seq.length();	
     		String accession = result.getAccessionID();
     		String desc = result.getDescription();
-    		QueryMatch new_match = new QueryMatch(accession, desc, sequence, numberBasePairs);
+    		Barcode new_match = new Barcode(accession, desc, sequence, numberBasePairs);
     		matches.add(new_match);
     	}
     	return matches;
     }
    
-    public static void printMatches(ArrayList<QueryMatch> matches) {
+    public static void printMatches(ArrayList<Barcode> matches) {
     	System.out.println("Your matches are located below:");
-    	for (QueryMatch match: matches) {
+    	for (Barcode match: matches) {
     		System.out.println(match.getInfo());
     	}
     }

@@ -1,12 +1,12 @@
 package genomeProject;
 
-public class QueryMatch {
+public class Barcode {
     private String accessionID;
     private String description;
     private String matched_sequence;
     private int numberBasePairs; 
 
-    public QueryMatch(String accessionID, String description, String matched_sequence, int numberBasePairs) {
+    public Barcode(String accessionID, String description, String matched_sequence, int numberBasePairs) {
     	this.accessionID = accessionID;
         this.description = description;
         this.matched_sequence = matched_sequence;
