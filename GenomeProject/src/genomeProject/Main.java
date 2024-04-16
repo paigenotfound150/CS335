@@ -51,58 +51,29 @@ public class Main {
         primerInputHandler.getPrimersFromUser(sc);
         String forwardPrimer = primerInputHandler.getForwardPrimer();
         String reversePrimer = primerInputHandler.getReversePrimer();
-        String reversedReversePrimer = reverseReversePrimer(reversePrimer); 
+        String reverseReversed = reverseReversePrimer(reversePrimer);
         
-        // Find matches
-        ArrayList<Barcode> matches = findMatches(queryResults, forwardPrimer, reversedReversePrimer);
-        printMatches(matches);
-        
-        // Close scanner at the complete end of program
-        sc.close();
+        for (QueryResult qr : queryResults) {
+            System.out.println(qr.fastaGet());
+        }
     }
-    
-    public static ArrayList<Barcode> findMatches(ArrayList<QueryResult> queryResults, String forwardPrimer, String reversePrimer) {
-    	ArrayList<Barcode> matches = new ArrayList<>();
-    	for (QueryResult result: queryResults) {
-    		String sequence = result.getSequence();
-    		int start = sequence.indexOf(forwardPrimer);
-    		int end = sequence.lastIndexOf(reversePrimer);
-    		
-    		// Check if there's actually a match found
-    		if ((start == -1) || (end == -1) || (end <= start)) { continue; }
-    		
-    		String matched_seq = sequence.substring(start, end);
-    		int numberBasePairs = matched_seq.length();	
-    		String accession = result.getAccessionID();
-    		String desc = result.getDescription();
-    		Barcode new_match = new Barcode(accession, desc, sequence, numberBasePairs);
-    		matches.add(new_match);
-    	}
-    	return matches;
-    }
-   
-    public static void printMatches(ArrayList<Barcode> matches) {
-    	System.out.println("Your matches are located below:");
-    	for (Barcode match: matches) {
-    		System.out.println(match.getInfo());
-    	}
-    }
-    
+
     public static ArrayList<QueryResult> createQueryResultsArray(ArrayList<String> records) {
         ArrayList<QueryResult> queryResults = new ArrayList<>();
-    	
+        
         for (String record : records) {
-            String accessionID = StringFormatter.getBookEndedString(record, "<GBSeq_accession-version>", "</GBSeq_accession-version>"); 
-        	QueryResult newQueryResult = new QueryResult(
-        			StringFormatter.getBookEndedString(record, "<GBSeq_definition>", "</GBSeq_definition>"),
-        			StringFormatter.getBookEndedString(record, "<GBSeq_sequence>", "</GBSeq_sequence>").toUpperCase(), 
-        			accessionID);
+            String accessionID = StringFormatter.getBookEndedString(record, "<GBSeq_accession-version>", "</GBSeq_accession-version>");
+            String speciesName = StringFormatter.getBookEndedString(record, "<GBSeq_organism>", "</GBSeq_organism>");
+            QueryResult newQueryResult = new QueryResult(
+                StringFormatter.getBookEndedString(record, "<GBSeq_definition>", "</GBSeq_definition>"),
+                StringFormatter.getBookEndedString(record, "<GBSeq_sequence>", "</GBSeq_sequence>").toUpperCase(), 
+                accessionID, speciesName);
             queryResults.add(newQueryResult);
             System.out.println(newQueryResult.fastaGet());
         }
         return queryResults;
     }
-    
+
     public static String reverseReversePrimer(String reversePrimer) {
         HashMap<String, ArrayList<String>> reversePrimerMatches = NeucMatch.makeReversePrimerDictionary();
         String reversedPrimer = "";
@@ -119,7 +90,7 @@ public class Main {
     public static String eSearcher(String header, Scanner sc) {
         // eSearch builder
         String dbQuery = EntrezQuery.getUserEntrezQuery(sc);
-        String esearchCommand = "esearch.fcgi?db=nuccore&term=".concat(dbQuery);
+        String esearchCommand = "esearch.fcgi?db=nuccore&term=" + dbQuery;
         String esearchQuery = header.concat(esearchCommand);
         String esearchResponse = "";
         
@@ -130,6 +101,6 @@ public class Main {
             e.printStackTrace();
         }
         
-        return(esearchResponse);
+        return esearchResponse;
     }
 }
