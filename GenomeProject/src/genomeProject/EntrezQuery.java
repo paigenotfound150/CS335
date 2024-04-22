@@ -5,7 +5,7 @@ public class EntrezQuery{
 	public static String getUserEntrezQuery(Scanner sc){
 		String terms = "";
 		System.out.println("Step 1: Reference Database.");
-		System.out.println("Please enter your taxon of interest (ex. 'Apis mellifera', 'Hymenoptera')");
+		System.out.println("Please enter your taxon of interest (ex. 'Apis mellifera', 'Bombus')");
 		String organismEntry = sc.nextLine();
 		System.out.println("Do you have additional search terms to add? (ex. 'NOT partial') Please enter 'y' for yes and 'n' for no.");
 		String termOpt = sc.nextLine();

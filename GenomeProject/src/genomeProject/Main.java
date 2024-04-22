@@ -62,11 +62,13 @@ public class Main {
         ArrayList<QueryResult> queryResults = new ArrayList<>();
         
         for (String record : records) {
+        	String description = StringFormatter.defGet(record);
+        	String sequence = StringFormatter.seqGet(record);
             String accessionID = StringFormatter.getBookEndedString(record, "<GBSeq_accession-version>", "</GBSeq_accession-version>");
             String speciesName = StringFormatter.getBookEndedString(record, "<GBSeq_organism>", "</GBSeq_organism>");
             QueryResult newQueryResult = new QueryResult(
-                StringFormatter.getBookEndedString(record, "<GBSeq_definition>", "</GBSeq_definition>"),
-                StringFormatter.getBookEndedString(record, "<GBSeq_sequence>", "</GBSeq_sequence>").toUpperCase(), 
+                description,
+                sequence, 
                 accessionID, speciesName);
             queryResults.add(newQueryResult);
             System.out.println(newQueryResult.fastaGet());

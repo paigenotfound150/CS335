@@ -45,6 +45,23 @@ public class StringFormatter {
 		return records;
 	}
 	
+	// get definition
+	public static String defGet(String response) {
+		int defStart = response.indexOf("<GBSeq_definition>");
+		int defEnd = response.indexOf("</GBSeq_definition>");
+		String definition = response.substring((defStart + 18), defEnd);
+		return(definition);
+	}
+	
+	// pull sequence from eFetch response
+	public static String seqGet(String response) {
+		int seqStart = response.indexOf("<GBSeq_sequence>");
+		int seqEnd = response.indexOf("</GBSeq_sequence>");
+		String sequence = response.substring((seqStart + 16), seqEnd).toUpperCase();
+		return(sequence);
+	}
+
+	
 	// get characters inbetween two strings
 	public static String getBookEndedString(String str, String start, String finish) {
 		String s = str.substring(str.indexOf(start) + start.length());
