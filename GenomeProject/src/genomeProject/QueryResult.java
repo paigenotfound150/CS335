@@ -1,42 +1,42 @@
 package genomeProject;
 
 public class QueryResult {
-    private String description;
-    private String sequence;
-    private String accessionID;
-    private String qr_species;
+    private String qrDesc;
+    private String qrSeq;
+    private String qrAccID;
+    private String qrTax;
 
     // Updated constructor to include accessionID and qr_species
     public QueryResult(String description, String sequence, String accessionID, String qr_species) {
-        this.description = description;
-        this.sequence = sequence;
-        this.accessionID = accessionID;
-        this.qr_species = qr_species;
+        this.qrDesc = description;
+        this.qrSeq = sequence;
+        this.qrAccID = accessionID;
+        this.qrTax = qr_species;
     }
 
     // Getter for description
     public String getDescription() {
-        return description;
+        return qrDesc;
     }
 
     // Getter for sequence
     public String getSequence() {
-        return sequence;
+        return qrSeq;
     }
     
     // Getter for accessionID
     public String getAccessionID() {
-        return accessionID;
+        return qrAccID;
     }
     
     // Getter for qr_species
     public String getSpeciesName() {
-        return qr_species;
+        return qrTax;
     }
 
     // Updated fastaGet() method to include accessionID, description, sequence, and qr_species
     public String fastaGet() {
         // Formats the output to include accessionID, description, sequence, and qr_species
-        return ">" + accessionID + " " + description + "\n" + sequence + "\n" + "Species: " + qr_species;
+        return ">" + qrAccID + " " + qrDesc + "\n" + qrSeq + "\n" + "Species: " + qrTax;
     }
 }

@@ -1,28 +1,29 @@
 package genomeProject;
 
 public class Barcode {
-    private String accessionID;
-    private String description;
-    private String matched_sequence;
+    private String barcAccID;
+    private String barcDesc;
+    private String barcSeq;
+    private String barcTax;
     private int numberBasePairs; 
 
     public Barcode(String accessionID, String description, String matched_sequence, int numberBasePairs) {
-    	this.accessionID = accessionID;
-        this.description = description;
-        this.matched_sequence = matched_sequence;
+    	this.barcAccID = accessionID;
+        this.barcDesc = description;
+        this.barcSeq = matched_sequence;
         this.numberBasePairs = numberBasePairs;
     }
     
     public String getaccessionID() {
-        return accessionID;
+        return barcAccID;
     }
 
     public String getDescription() {
-        return description;
+        return barcDesc;
     }
 
     public String getMatchedSequence() {
-        return matched_sequence;
+        return barcSeq;
     }
     
     public int getNumberBasePairs() {
@@ -30,6 +31,6 @@ public class Barcode {
     }
     
     public String getInfo() {
-        return accessionID + " " + description + " " + "Base pairs: " + numberBasePairs;
+        return barcAccID + " " + barcDesc + " " + "Base pairs: " + numberBasePairs;
     }
 }
