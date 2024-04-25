@@ -75,7 +75,8 @@ public class Main {
     		int numberBasePairs = matched_seq.length();	
     		String accession = result.getAccessionID();
     		String desc = result.getDescription();
-    		Barcode new_match = new Barcode(accession, desc, matched_seq, numberBasePairs);
+    		String tax = result.getSpeciesName();
+    		Barcode new_match = new Barcode(accession, desc, matched_seq, numberBasePairs, tax);
     		matches.add(new_match);
     	}
     	return matches;

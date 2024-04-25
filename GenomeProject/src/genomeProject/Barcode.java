@@ -7,11 +7,12 @@ public class Barcode {
     private String barcTax;
     private int numberBasePairs; 
 
-    public Barcode(String accessionID, String description, String matched_sequence, int numberBasePairs) {
+    public Barcode(String accessionID, String description, String matched_sequence, int numberBasePairs, String taxonomy) {
     	this.barcAccID = accessionID;
         this.barcDesc = description;
         this.barcSeq = matched_sequence;
         this.numberBasePairs = numberBasePairs;
+        this.barcTax = taxonomy;
     }
     
     public String getaccessionID() {
@@ -20,6 +21,10 @@ public class Barcode {
 
     public String getDescription() {
         return barcDesc;
+    }
+    
+    public String getTaxonomy() {
+    	return barcTax;
     }
 
     public String getMatchedSequence() {
@@ -31,6 +36,6 @@ public class Barcode {
     }
     
     public String getInfo() {
-        return barcAccID + " " + barcDesc + " " + "Base pairs: " + numberBasePairs + "Barcode" + barcSeq;
+        return barcAccID + " " + barcTax + " " + barcDesc + " " + "Base pairs: " + numberBasePairs + "Barcode" + barcSeq;
     }
 }
