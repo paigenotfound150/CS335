@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import genomeProject.Intro;
 
 public class Main {
 
     public static void main(String[] args) {
+    	Intro.printIntroduction();
+    	
         Scanner sc = new Scanner(System.in);
         String header = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/";
         
