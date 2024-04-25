@@ -37,6 +37,6 @@ public class QueryResult {
     // Updated fastaGet() method to include accessionID, description, sequence, and qr_species
     public String fastaGet() {
         // Formats the output to include accessionID, description, sequence, and qr_species
-        return ">" + qrAccID + " " + qrDesc + "\n" + qrSeq + "\n" + "Species: " + qrTax;
+        return ">" + qrAccID + " " + qrDesc + "\n" + ""+ qrSeq + "\n" + "Species: " + qrTax;
     }
 }

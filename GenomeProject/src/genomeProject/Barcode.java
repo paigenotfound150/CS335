@@ -31,6 +31,6 @@ public class Barcode {
     }
     
     public String getInfo() {
-        return barcAccID + " " + barcDesc + " " + "Base pairs: " + numberBasePairs;
+        return barcAccID + " " + barcDesc + " " + "Base pairs: " + numberBasePairs + "Barcode" + barcSeq;
     }
 }

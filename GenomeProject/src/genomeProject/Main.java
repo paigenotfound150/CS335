@@ -53,10 +53,40 @@ public class Main {
         String reversePrimer = primerInputHandler.getReversePrimer();
         String reverseReversed = reverseReversePrimer(reversePrimer);
         
-        for (QueryResult qr : queryResults) {
-            System.out.println(qr.fastaGet());
+     // Find matches
+        ArrayList<Barcode> barcodes = findBarcodes(queryResults, forwardPrimer, reverseReversed);
+        printMatches(barcodes);
+        
+        sc.close();   
         }
+    
+
+    public static ArrayList<Barcode> findBarcodes(ArrayList<QueryResult> queryResults, String forwardPrimer, String reversePrimer) {
+    	ArrayList<Barcode> matches = new ArrayList<>();
+    	for (QueryResult result: queryResults) {
+    		String sequence = result.getSequence();
+    		int start = sequence.indexOf(forwardPrimer);
+    		int end = sequence.lastIndexOf(reversePrimer);
+
+    		// Check if there's actually a match found
+    		if ((start == -1) || (end == -1) || (end <= start)) { continue; }
+
+    		String matched_seq = sequence.substring(start, end);
+    		int numberBasePairs = matched_seq.length();	
+    		String accession = result.getAccessionID();
+    		String desc = result.getDescription();
+    		Barcode new_match = new Barcode(accession, desc, matched_seq, numberBasePairs);
+    		matches.add(new_match);
+    	}
+    	return matches;
     }
+    
+    public static void printMatches(ArrayList<Barcode> matches) {
+    	System.out.println("Your matches are located below:");
+    	for (Barcode match: matches) {
+    		System.out.println(match.getInfo()); 
+    		}
+    	}
 
     public static ArrayList<QueryResult> createQueryResultsArray(ArrayList<String> records) {
         ArrayList<QueryResult> queryResults = new ArrayList<>();
