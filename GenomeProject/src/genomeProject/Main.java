@@ -52,13 +52,15 @@ public class Main {
         // After the NCBI fetch, now ask for primers
         PrimerInputHandler primerInputHandler = new PrimerInputHandler();
         primerInputHandler.getPrimersFromUser(sc);
-        String forwardPrimer = primerInputHandler.getForwardPrimer();
-        String reversePrimer = primerInputHandler.getReversePrimer();
+        String forwardPrimer = primerInputHandler.getForwardPrimer().toUpperCase();
+        String reversePrimer = primerInputHandler.getReversePrimer().toUpperCase();
         String reverseReversed = reverseReversePrimer(reversePrimer);
         
-     // Find matches
+        // Find barcodes
         ArrayList<Barcode> barcodes = findBarcodes(queryResults, forwardPrimer, reverseReversed);
-        printMatches(barcodes);
+        printBarcodes(barcodes);
+        
+        CreateBarcodeFile.convertToFile(barcodes);
         
         sc.close();   
         }
@@ -78,17 +80,17 @@ public class Main {
     		int numberBasePairs = matched_seq.length();	
     		String accession = result.getAccessionID();
     		String desc = result.getDescription();
-    		String tax = result.getSpeciesName();
+    		String tax = result.getTaxonomy();
     		Barcode new_match = new Barcode(accession, desc, matched_seq, numberBasePairs, tax);
     		matches.add(new_match);
     	}
     	return matches;
     }
     
-    public static void printMatches(ArrayList<Barcode> matches) {
+    public static void printBarcodes(ArrayList<Barcode> barcodes) {
     	System.out.println("Your matches are located below:");
-    	for (Barcode match: matches) {
-    		System.out.println(match.getInfo()); 
+    	for (Barcode barcode: barcodes) {
+    		System.out.println(barcode.getInfo()); 
     		}
     	}
 
@@ -99,11 +101,11 @@ public class Main {
         	String description = StringFormatter.defGet(record);
         	String sequence = StringFormatter.seqGet(record);
             String accessionID = StringFormatter.getBookEndedString(record, "<GBSeq_accession-version>", "</GBSeq_accession-version>");
-            String speciesName = StringFormatter.getBookEndedString(record, "<GBSeq_organism>", "</GBSeq_organism>");
+            String taxonomy = StringFormatter.getBookEndedString(record, "<GBSeq_taxonomy>", "</GBSeq_taxonomy>");
             QueryResult newQueryResult = new QueryResult(
                 description,
                 sequence, 
-                accessionID, speciesName);
+                accessionID, taxonomy);
             queryResults.add(newQueryResult);
             System.out.println(newQueryResult.fastaGet());
         }
@@ -119,7 +121,6 @@ public class Main {
         	String match = NeucMatch.getMatch(reversePrimerMatches, n).replaceAll("[\\[\\]]", "");
             reversedPrimer = match + reversedPrimer; // Fix to correctly reverse and complement
         }
-        System.out.println("The reversed primer is: " + reversedPrimer);
         return reversedPrimer;
     }
     

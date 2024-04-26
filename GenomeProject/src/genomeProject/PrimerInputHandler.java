@@ -28,7 +28,7 @@ public class PrimerInputHandler {
 
     private boolean isValidPrimer(String primer) {
         // Check if the primer sequence contains only A, T, C, or G
-        return primer.matches("[ATCG]+");
+        return primer.toUpperCase().matches("[ATCG]+");
     }
 
     public String getForwardPrimer() {

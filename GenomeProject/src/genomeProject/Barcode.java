@@ -36,6 +36,6 @@ public class Barcode {
     }
     
     public String getInfo() {
-        return "ACCESSION: " + barcAccID + " SPECIES NAME: " + barcTax + " DESCRIPTION: " + barcDesc + " " + " NUMBER OF BASE PAIRS: " + numberBasePairs + " BARCODE SEQUENCE: " + barcSeq;
+        return "ACCESSION: " + barcAccID +  "DESCRIPTION: " + barcDesc +" TAXONOMY: " + barcTax + " " + " NUMBER OF BASE PAIRS: " + numberBasePairs + " BARCODE SEQUENCE: " + barcSeq;
     }
 }

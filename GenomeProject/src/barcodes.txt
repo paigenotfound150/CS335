@@ -1,0 +1,36 @@
+> Bombus bimaculatus voucher CU:08-MT-2024 cytochrome c oxidase subunit I (COX1) gene, partial cds; mitochondrial
++
+ACCATTTATAATTGGAGGATTTGGAAATTATTTAATTCCTTTAATATTAGGATCNCCTGACATAGCTTTTCCTCGAATAAATAATATTAGATTTTGATTANT
+Eukaryota; Metazoa; Ecdysozoa; Arthropoda; Hexapoda; Insecta; Pterygota; Neoptera; Endopterygota; Hymenoptera; Apocrita; Aculeata; Apoidea; Anthophila; Apidae; Bombus; Pyrobombus
+
+
+> Bombus vestalis voucher INV12160 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial
++
+ACCATTTTTAATTGGTGGATTTGGAAATTATCTAATTCCATTAATATTAGGATCTCCTGATATAGCATTTCCACGATTAAATAATCTAAGATTTTGACTTTTACC
+Eukaryota; Metazoa; Ecdysozoa; Arthropoda; Hexapoda; Insecta; Pterygota; Neoptera; Endopterygota; Hymenoptera; Apocrita; Aculeata; Apoidea; Anthophila; Apidae; Bombus; Psithyrus
+
+
+> Bombus vestalis voucher INV09330 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial
++
+ACCATTTTTAATTGGTGGATTTGGAAATTATCTAATTCCATTAATATTAGGATCTCCTGATATAGCATTTCCACGATTAAATAATCTAAGATTTTGACTTTTACC
+Eukaryota; Metazoa; Ecdysozoa; Arthropoda; Hexapoda; Insecta; Pterygota; Neoptera; Endopterygota; Hymenoptera; Apocrita; Aculeata; Apoidea; Anthophila; Apidae; Bombus; Psithyrus
+
+
+> Bombus vestalis voucher INV13233 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial
++
+ACCATTTTTAATTGGTGGATTTGGAAATTATCTAATTCCATTAATATTAGGATCTCCTGATATAGCATTTCCACGATTAAATAATCTAAGATTTTGACTTTTACC
+Eukaryota; Metazoa; Ecdysozoa; Arthropoda; Hexapoda; Insecta; Pterygota; Neoptera; Endopterygota; Hymenoptera; Apocrita; Aculeata; Apoidea; Anthophila; Apidae; Bombus; Psithyrus
+
+
+> Bombus terrestris voucher INV13000 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial
++
+ACCTTTTATAATTGGTGGATTTGGAAATTATCTAATTCCATTAATATTAGGATCCCCAGATATAGCTTTTCCTCGAATAAATAATATTAGATTTTGACTTCTACCTCCATCATTATTCATATTATTATTAAGAAATATATTTACACCTAATGTAGGTACAGGATGAACTGTATATCCTCCTTTATCTTCTTATTTATTTCATTCATCACCTTCAATTGATATTGCAATTTTTTCTTTACATATATCAGGAATCTCTTCAATTATTGGATCATTAAATTTTATCGTTACTATTTTATTAATAAAAAATTTTTCATTAAATTATGATCAAATTAATTTATTTTCATGATCAGTATGTATTACAGTAATTTTATTAATTCTATCTTTACCAGTATTA
+Eukaryota; Metazoa; Ecdysozoa; Arthropoda; Hexapoda; Insecta; Pterygota; Neoptera; Endopterygota; Hymenoptera; Apocrita; Aculeata; Apoidea; Anthophila; Apidae; Bombus; Bombus
+
+
+> Bombus terrestris voucher INV12471 cytochrome oxidase subunit 1 (COI) gene, partial cds; mitochondrial
++
+ACCTTTTATAATTGGTGGATTTGGAAATTATCTAATTCCATTAATATTAGGATCCCCAGATATAGCTTTTCCTCGAATAAATAATATTAGATTTTGACTTCTACCTCCATCATTATTCATATTATTATTAAGAAATATATTTACACCTAATGTAGGTACAGGATGAACTGTATATCCTCCTTTATCTTCTTATTTATTTCATTCATCACCTTCAATTGATATTGCAATTTTTTCTTTACATATATCAGGAATCTCTTCAATTATTGGATCATTAAATTTTATCGTTACTATTTTATTAATAAAAAATTTTTCATTAAATTATGATCAAATTAATTTATTTTCATGATCAGTATGTATTACAGTAATTTTATTAATTCTATCTTTACCAGTATTA
+Eukaryota; Metazoa; Ecdysozoa; Arthropoda; Hexapoda; Insecta; Pterygota; Neoptera; Endopterygota; Hymenoptera; Apocrita; Aculeata; Apoidea; Anthophila; Apidae; Bombus; Bombus
+
+
