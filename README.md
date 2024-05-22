@@ -22,6 +22,6 @@ _Please note that this tool can only return up to 20 records at this time._
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [NCBI E-Utils](https://www.ncbi.nlm.nih.gov/books/NBK25500/)
+* [NCBI E-Utils (National Institutes of Health)](https://www.ncbi.nlm.nih.gov/books/NBK25500/)
   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
